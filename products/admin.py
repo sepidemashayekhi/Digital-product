@@ -31,7 +31,7 @@ class FileInLineAdmin(admin.StackedInline):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display =['title' , 'published_time']
+    list_display =['id','title' , 'published_time']
     list_filter =[
         'published_time'
     ]
