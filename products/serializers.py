@@ -22,7 +22,8 @@ class FileSerializer(serializers.ModelSerializer):
 
 class ProductSerializer(serializers.ModelSerializer):
     category=Categoryserializer(many=True)
-
+    file_set = FileSerializer(many=True)
+    foo = serializers.SerializerMethodField()
     class Meta:
         model = Product
         fields =[
@@ -30,4 +31,8 @@ class ProductSerializer(serializers.ModelSerializer):
             'caption',
             'avatar',
             'category',
+            'file_set' ,
+            'foo'
         ]
+    def get_foo(self , obj):
+        return obj.id
