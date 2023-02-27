@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('product/' ,include( 'products.urls'))
+    path('' ,include( 'products.urls'))
 ]
 if settings.IS_DEVEL==True:
     urlpatterns +=static(settings.MEDIA_URL , document_root=settings.MEDIA_ROOT)
