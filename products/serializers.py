@@ -5,6 +5,7 @@ class Categoryserializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields =[
+            'id',
             'title' ,
             'caption' ,
             'avatar' ,
@@ -27,6 +28,7 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields =[
+            'id' ,
             'title' ,
             'caption',
             'avatar',

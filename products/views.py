@@ -45,6 +45,7 @@ class ProductDetales(APIView):
         serializer = ProductSerializer(product , context ={
             'request':request
         })
+        print('llllllllllllllllll')
         return Response(serializer.data)
     
     def put(self, request , id):
@@ -85,8 +86,11 @@ class CategoryDetale(APIView):
     
     def get(self , request ,id ):
         category = self._get_object_(id)
-        serializer = Categoryserializer(category) 
+        serializer = Categoryserializer(category,context ={
+            'request':request
+        }) 
         return Response(serializer.data , status=status.HTTP_200_OK)
+    
     def put(self ,request , id):
         category = self._get_object_(id)
         serializer =Categoryserializer(category , request.data)
@@ -102,7 +106,7 @@ class CategoryDetale(APIView):
 class FileList(APIView):
     def get(self , request , product_pk):
         try:
-            file = File.objects.get(product_id = product_pk)
+            file = File.objects.filter(product_id = product_pk)
 
         except:
             raise Http404
